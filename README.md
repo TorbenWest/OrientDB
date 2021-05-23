@@ -1,5 +1,5 @@
 # OrientDB
-This repository contains a small example about OrientDB and how to use the Java interface.
+This repository contains a small example about OrientDB and how you could use the Java API.
 
 Please follow the first steps from the tutorial: <br>
 http://orientdb.com/docs/3.1.x/fiveminute/java.html
