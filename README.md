@@ -11,3 +11,6 @@ Before running the application you have to change the login credentials from the
 https://github.com/TorbenWest/OrientDB/blob/main/src/main/java/com/orientdb/Main.java
 
 After that you can start OrientDB and run the main.
+
+If you want to access your database via the browser, you can use the following link: <br>
+http://localhost:2480/studio/index.html#/
