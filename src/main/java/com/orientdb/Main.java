@@ -12,7 +12,6 @@ public class Main {
         OrientDB orient = new OrientDB("remote:localhost", OrientDBConfig.defaultConfig());
         ODatabaseSession db = orient.open("test", "test", "password");
 
-        System.out.println("Creating persons...");
         PersonManager personManager = new PersonManager(db);
         personManager.createPerson();
         personManager.selectFromEngland();
@@ -25,7 +24,7 @@ public class Main {
         manager.findFriendsOfFriendsExpandBoth();
         manager.findFriendsOfFriendsExpandOutOut();
         manager.findFriendsOfDepthFour();
-//        manager.getFriendsWithAliceBob();
+        manager.getFriendsWithAliceBob();
 
         db.close();
         orient.close();

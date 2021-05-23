@@ -56,27 +56,28 @@ public class FriendManager extends Manager {
     }
 
     public void getFriendsWithAliceBob() {
-        System.out.println("\n");
-
         String query =
-                " MATCH                                           " +
-                "   {class:Person, as:a, where: (name = :name1)}, " +
-                "   {class:Person, as:b, where: (name = :name2)}, " +
-                "   {as:a} -FriendOf-> {as:x} -FriendOf-> {as:b}  " +
-                " RETURN x.name as friend                         ";
+                "MATCH\n" +
+                "\t{class:Person, as:a, where: (name = :name1)},\n" +
+                "\t{class:Person, as:b, where: (name = :name2)},\n" +
+                "\t{as:a} -FriendOf-> {as:x} -FriendOf-> {as:b}\n" +
+                " RETURN x.name as friend";
 
-        System.out.println("Get the friend of Niklas and Fynn: \"" +
-                query.replace("name1", "Niklas").replace("name2", "Fynn") + "\"");
+        System.out.println("\nGet the mutual friends of Dorothee and Cora.: \n\"" + query
+                .replace(":name1", "'Dorothee'")
+                .replace(":name2", "'Cora'") + "\"\n");
 
         Map<String, Object> params = new HashMap<>();
-        params.put("name1", "Niklas");
-        params.put("name2", "Fynn");
+        params.put("name1", "Dorothee");
+        params.put("name2", "Cora");
 
-        OResultSet rs = this.session.query(query, params);
+        OResultSet rs = this.session.query(query
+                .replaceAll("\n", " ")
+                .replaceAll("\t", " "), params);
 
         while (rs.hasNext()) {
             OResult item = rs.next();
-            System.out.println("Friend: " + item.getProperty("name"));
+            System.out.println("Mutual Friend: " + item.getProperty("friend"));
         }
 
         rs.close();
@@ -87,8 +88,8 @@ public class FriendManager extends Manager {
         OResultSet rs = this.session.query(query, "Bob");
 
         rs.stream()
-                .sorted(Comparator.comparing(s -> s.getProperty("name")))
-                .forEach(x -> System.out.println("Friend: " + x.getProperty("name")));
+                .sorted(Comparator.comparing(r -> r.getProperty("name")))
+                .forEach(r -> System.out.println("Friend: " + r.getProperty("name")));
         rs.close();
     }
 }

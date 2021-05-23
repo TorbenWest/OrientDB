@@ -20,6 +20,7 @@ public class PersonManager extends Manager {
             this.session.createVertexClass("Person");
         }
 
+        // You could define the properties likes this. Otherwise you will create a schemaless vertex.
 //        if (person.getProperty("name") == null) {
 //            person.createProperty("name", OType.STRING);
 //            person.createProperty("address", OType.STRING);
@@ -30,6 +31,7 @@ public class PersonManager extends Manager {
     }
 
     public void createPerson() {
+        System.out.println("Creating persons...");
         System.out.println("\nCREATE VERTEX Person SET \n" +
                 "name = 'Tom',\n" +
                 "address = { \n" +
@@ -63,7 +65,6 @@ public class PersonManager extends Manager {
         System.out.println("Creating relationships...");
         System.out.println("\nCREATE EDGE FriendOf FROM #10:3 TO #11:4\n");
 
-        addFriend(alice, bob);
         addFriend(alice, niklas);
         addFriend(alice, paul);
         addFriend(alice, peter);
