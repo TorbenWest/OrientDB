@@ -113,16 +113,15 @@ public class PersonManager extends Manager {
         addFriend(peter, dorothee);
     }
 
-    public void selectFromEngland() {
+    public void selectFromCity() {
         System.out.println("\n");
 
-        String query = "select from Person where address.city.name = ?";
+        String query = "SELECT FROM Person WHERE address.city.name = ?";
         System.out.println("Select all persons which living in Krefeld: \"" + query.replace("?", "'Krefeld'") + "\"");
         OResultSet rs = this.session.query(query, "Krefeld");
 
         rs.stream().forEach(x -> System.out.println("Result: " + x.getProperty("name")));
         rs.close();
-
     }
 
     private void addFriend(OVertex first, OVertex second) {
@@ -134,7 +133,7 @@ public class PersonManager extends Manager {
     private OVertex createPerson(String name, String street, String city, String code, String country) {
         OVertex result = this.session.newVertex("Person");
 
-        String serialize = GsonConverter.serialize(new Person(name, new Address(city, code, street, country)));
+        String serialize = GsonConverter.serialize(new Person(name, city, code, street, country));
         System.out.println("Creating new vertex: " + serialize);
 
         result.fromJSON(serialize);

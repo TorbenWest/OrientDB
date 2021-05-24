@@ -12,6 +12,10 @@ public class Person implements Serializable {
         this.address = address;
     }
 
+    public Person(String name, String city, String code, String street, String country) {
+        this(name, new Address(city, code, street, country));
+    }
+
     public String getName() {
         return name;
     }

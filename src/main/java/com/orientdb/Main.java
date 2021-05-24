@@ -13,11 +13,11 @@ public class Main {
         ODatabaseSession db = orient.open("test", "test", "password");
 
         PersonManager personManager = new PersonManager(db);
-        personManager.createPerson();
-        personManager.selectFromEngland();
-
-
         FriendManager manager = new FriendManager(db);
+
+        personManager.createPerson();
+        personManager.selectFromCity();
+
         manager.findFriendsOfFriends();
         manager.findFriendsOfFriendsExpandOut();
         manager.findFriendsOfFriendsExpandIn();
