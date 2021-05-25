@@ -34,17 +34,17 @@ public class PersonManager extends Manager {
         System.out.println("Creating persons...");
         System.out.println("\nCREATE VERTEX Person SET \n" +
                 "name = 'Tom',\n" +
-                "address = { \n" +
+                "address = {\n" +
                 "\tcity: {\n" +
-                "    \tname: 'London', \n" +
-                "        code: 'DH 0139' \n" +
-                "    },\n" +
-                "    street: {\n" +
-                "        name: 'Too St.', \n" +
-                "        number: '2', \n" +
-                "        extension: 'a'\n" +
-                "    }, \n" +
-                "    country: 'England' \n" +
+                "\t\tname: 'London', \n" +
+                "\t\tcode: 'DH 0139' \n" +
+                "\t},\n" +
+                "\tstreet: {\n" +
+                "\t\tname: 'Too St.', \n" +
+                "\t\tnumber: '2', \n" +
+                "\t\textension: 'a'\n" +
+                "\t}, \n" +
+                "\tcountry: 'England' \n" +
                 "}\n");
 
         OVertex alice = createPerson("Alice", "Foo St.", "London", "DE 982", "England");

@@ -8,6 +8,7 @@ import com.orientechnologies.orient.core.db.OrientDBConfig;
 
 public class Main {
 
+    // mvn exec:java
     public static void main(String[] args) {
         OrientDB orient = new OrientDB("remote:localhost", OrientDBConfig.defaultConfig());
         ODatabaseSession db = orient.open("test", "test", "password");
